@@ -24,7 +24,7 @@ function Content() {
       strategy: data.strategyName,
       market: data.market,
       size: data.orderSize,
-      reverse: String(data.isReverse),
+      reverse: data.isReverse,
       order: '{{strategy.order.action}}',
       price: '{{strategy.order.price}}',
     };
