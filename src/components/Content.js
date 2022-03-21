@@ -26,6 +26,7 @@ function Content() {
       size: data.orderSize,
       reverse: data.isReverse,
       order: '{{strategy.order.action}}',
+      position: '{{strategy.market_position}}',
       price: '{{strategy.order.price}}',
     };
     if (data.passphrase) {
