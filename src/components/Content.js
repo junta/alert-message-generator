@@ -32,7 +32,7 @@ function Content() {
     if (data.passphrase) {
       alertObject.passphrase = data.passphrase;
     }
-    const alertJson = JSON.stringify(alertObject);
+    const alertJson = JSON.stringify(alertObject, null, '\t');
     setOutputJson(alertJson);
   };
 
@@ -53,7 +53,11 @@ function Content() {
                   margin="normal"
                   placeholder="MacdStrategy"
                   error={errors.strategyName ? true : false}
-                  helperText={errors.strategyName?.message}
+                  helperText={
+                    errors.strategyName
+                      ? errors.strategyName?.message
+                      : 'any string to distinct each strategy'
+                  }
                 />
               )}
             />
@@ -125,7 +129,11 @@ function Content() {
                   placeholder="0.1"
                   type="number"
                   error={errors.orderSize ? true : false}
-                  helperText={errors.orderSize?.message}
+                  helperText={
+                    errors.strategyName
+                      ? errors.strategyName?.message
+                      : 'must be greater than mininum order size on dYdX'
+                  }
                   inputProps={{
                     maxLength: 13,
                     step: '0.001',
@@ -145,6 +153,10 @@ function Content() {
                 />
               )}
             />
+            <p style={{ fontSize: '14px', color: 'gray' }}>
+              check ON if this strategy takes opposite position on each trade and always has long or
+              short position.
+            </p>
           </div>
 
           <div>
@@ -157,6 +169,7 @@ function Content() {
                   label="Passphrase(optional)"
                   margin="normal"
                   placeholder="your passphrase"
+                  helperText="to enhance security"
                 />
               )}
             />
@@ -176,6 +189,7 @@ function Content() {
             rows={10}
             value={outputJson}
             style={{ width: '80%' }}
+            onChange={(event) => setOutputJson(event.target.value)}
           />
         </div>
         <CopyToClipboard text={outputJson} onCopy={() => setCopied(true)}>
