@@ -21,6 +21,7 @@ function Content() {
   const onSubmit = (data) => {
     console.log('onSubmit:', data);
     const alertObject = {
+      exchange: data.exchange,
       strategy: data.strategyName,
       market: data.market,
       size: data.orderSize,
@@ -41,6 +42,28 @@ function Content() {
       <Grid item xs={6}>
         <h2>Input(Parameters)</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
+          <div>
+            <Controller
+              control={control}
+              name="exchange"
+              rules={{ required: 'required' }}
+              render={({ field }) => (
+                <TextField
+                  {...field}
+                  label="exchange"
+                  margin="normal"
+                  id="select"
+                  select
+                  style={{ width: '200px' }}
+                  error={errors.exchange ? true : false}
+                  helperText={errors.exchange?.message}
+                >
+                  <MenuItem value="dydx">dYdX</MenuItem>
+                  <MenuItem value="perpetual">Perpetual Protocol</MenuItem>
+                </TextField>
+              )}
+            />
+          </div>
           <div>
             <Controller
               control={control}
@@ -112,6 +135,14 @@ function Content() {
                   <MenuItem value="TRX_USD">TRX</MenuItem>
                   <MenuItem value="XTZ_USD">XTZ</MenuItem>
                   <MenuItem value="HNT_USD">HNT</MenuItem>
+                  <MenuItem value="APE_USD">APE</MenuItem>
+                  <MenuItem value="BNB_USD">BNB</MenuItem>
+                  <MenuItem value="FLOW_USD">FLOW</MenuItem>
+                  <MenuItem value="FTM_USD">FTM</MenuItem>
+                  <MenuItem value="NEAR_USD">NEAR</MenuItem>
+                  <MenuItem value="ONE_USD">ONE</MenuItem>
+                  <MenuItem value="PERP_USD">PERP</MenuItem>
+                  <MenuItem value="SAND_USD">SAND</MenuItem>
                 </TextField>
               )}
             />
