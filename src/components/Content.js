@@ -109,7 +109,7 @@ function Content() {
                   <MenuItem value="SUSHI_USD">SUSHI</MenuItem>
                   <MenuItem value="SOL_USD">SOL</MenuItem>
                   <MenuItem value="YFI_USD">YFI</MenuItem>
-                  <MenuItem value="1INCH_USD">1INCH</MenuItem>
+                  <MenuItem value="ONEINCH_USD">1INCH</MenuItem>
                   <MenuItem value="AVAX_USD">AVAX</MenuItem>
                   <MenuItem value="SNX_USD">SNX</MenuItem>
                   <MenuItem value="CRV_USD">CRV</MenuItem>
@@ -172,6 +172,16 @@ function Content() {
                 />
               )}
             />
+            {/* <Controller
+              control={control}
+              name="isDynamicOrderSize"
+              render={({ field: { value, onChange } }) => (
+                <FormControlLabel
+                  control={<Checkbox checked={value} onChange={onChange} color="primary" />}
+                  label="dynamic order size"
+                />
+              )}
+            /> */}
           </div>
           <div>
             <Controller
