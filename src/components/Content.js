@@ -24,7 +24,6 @@ function Content() {
       exchange: data.exchange,
       strategy: data.strategyName,
       market: data.market,
-      size: data.orderSize,
       reverse: data.isReverse,
       order: '{{strategy.order.action}}',
       position: '{{strategy.market_position}}',
@@ -32,6 +31,11 @@ function Content() {
     };
     if (data.passphrase) {
       alertObject.passphrase = data.passphrase;
+    }
+    if (data.orderSize) {
+      alertObject.size = data.orderSize;
+    } else if (data.orderSizeUsd) {
+      alertObject.sizeUsd = data.orderSizeUsd;
     }
     const alertJson = JSON.stringify(alertObject, null, '\t');
     setOutputJson(alertJson);
@@ -58,8 +62,9 @@ function Content() {
                   error={errors.exchange ? true : false}
                   helperText={errors.exchange?.message}
                 >
-                  <MenuItem value="dydx">dYdX</MenuItem>
+                  <MenuItem value="dydx">dYdX v3</MenuItem>
                   <MenuItem value="perpetual">Perpetual Protocol</MenuItem>
+                  <MenuItem value="gmx">GMX v2</MenuItem>
                 </TextField>
               )}
             />
@@ -143,6 +148,8 @@ function Content() {
                   <MenuItem value="ONE_USD">ONE</MenuItem>
                   <MenuItem value="PERP_USD">PERP</MenuItem>
                   <MenuItem value="SAND_USD">SAND</MenuItem>
+                  <MenuItem value="XRP_USD">XRP</MenuItem>
+                  <MenuItem value="ARB_USD">ARB</MenuItem>
                 </TextField>
               )}
             />
@@ -151,7 +158,6 @@ function Content() {
             <Controller
               control={control}
               name="orderSize"
-              rules={{ required: 'required' }}
               render={({ field }) => (
                 <TextField
                   {...field}
@@ -163,7 +169,7 @@ function Content() {
                   helperText={
                     errors.strategyName
                       ? errors.strategyName?.message
-                      : 'must be greater than mininum order size on dYdX'
+                      : 'must be greater than mininum order size on exchange'
                   }
                   inputProps={{
                     maxLength: 13,
@@ -172,16 +178,31 @@ function Content() {
                 />
               )}
             />
-            {/* <Controller
+          </div>
+          <div>
+            <Controller
               control={control}
-              name="isDynamicOrderSize"
-              render={({ field: { value, onChange } }) => (
-                <FormControlLabel
-                  control={<Checkbox checked={value} onChange={onChange} color="primary" />}
-                  label="dynamic order size"
+              name="orderSizeUsd"
+              render={({ field }) => (
+                <TextField
+                  {...field}
+                  label="order size usd"
+                  margin="normal"
+                  placeholder="100"
+                  type="number"
+                  error={errors.orderSize ? true : false}
+                  helperText={
+                    errors.strategyName
+                      ? errors.strategyName?.message
+                      : 'must be greater than mininum order size on exchange'
+                  }
+                  inputProps={{
+                    maxLength: 13,
+                    step: '0.01',
+                  }}
                 />
               )}
-            /> */}
+            />
           </div>
           <div>
             <Controller
@@ -199,7 +220,6 @@ function Content() {
               short position.
             </p>
           </div>
-
           <div>
             <Controller
               control={control}
@@ -215,7 +235,6 @@ function Content() {
               )}
             />
           </div>
-
           <Button variant="contained" color="primary" type="submit">
             Generate
           </Button>
