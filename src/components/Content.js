@@ -63,6 +63,7 @@ function Content() {
                   helperText={errors.exchange?.message}
                 >
                   <MenuItem value="dydx">dYdX v3</MenuItem>
+                  <MenuItem value="dydxv4">dYdX v4</MenuItem>
                   <MenuItem value="perpetual">Perpetual Protocol</MenuItem>
                   <MenuItem value="gmx">GMX v2</MenuItem>
                 </TextField>
@@ -150,6 +151,17 @@ function Content() {
                   <MenuItem value="SAND_USD">SAND</MenuItem>
                   <MenuItem value="XRP_USD">XRP</MenuItem>
                   <MenuItem value="ARB_USD">ARB</MenuItem>
+                  <MenuItem value="TIA_USD">TIA</MenuItem>
+                  <MenuItem value="OP_USD">OP</MenuItem>
+                  <MenuItem value="SUI_USD">SUI</MenuItem>
+                  <MenuItem value="LDO_USD">LDO</MenuItem>
+                  <MenuItem value="BLUR_USD">BLUR</MenuItem>
+                  <MenuItem value="SEI_USD">SEI</MenuItem>
+                  <MenuItem value="WLD_USD">WLD</MenuItem>
+                  <MenuItem value="APT_USD">APT</MenuItem>
+                  <MenuItem value="JUP_USD">JUP</MenuItem>
+                  <MenuItem value="PEPE_USD">PEPE</MenuItem>
+                  <MenuItem value="SHIB_USD">SHIB</MenuItem>
                 </TextField>
               )}
             />
