@@ -66,6 +66,7 @@ function Content() {
                   <MenuItem value="dydxv4">dYdX v4</MenuItem>
                   <MenuItem value="perpetual">Perpetual Protocol</MenuItem>
                   <MenuItem value="gmx">GMX v2</MenuItem>
+                  <MenuItem value="bluefin">Bluefin</MenuItem>
                 </TextField>
               )}
             />
