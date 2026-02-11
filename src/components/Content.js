@@ -67,6 +67,7 @@ function Content() {
                   <MenuItem value="perpetual">Perpetual Protocol</MenuItem>
                   <MenuItem value="gmx">GMX v2</MenuItem>
                   <MenuItem value="bluefin">Bluefin</MenuItem>
+                  <MenuItem value="hyperliquid">Hyperliquid</MenuItem>
                 </TextField>
               )}
             />
